@@ -13,6 +13,7 @@
         <?php endif ?>
 
         <?= $this->asset->colorCss() ?>
+        <?= $this->asset->css('assets/css/w3.css') ?>
         <?= $this->asset->css('assets/css/vendor.min.css') ?>
         <?= $this->asset->css('assets/css/app.min.css') ?>
         <?= $this->asset->customCss() ?>
@@ -50,6 +51,7 @@
           data-js-lang="<?= $this->app->jsLang() ?>"
           data-js-date-format="<?= $this->app->getJsDateFormat() ?>"
           data-js-time-format="<?= $this->app->getJsTimeFormat() ?>"
+          class="w3-liight-grey"
     >
 
     <?php if (isset($no_layout) && $no_layout): ?>
@@ -63,7 +65,15 @@
             'board_selector' => isset($board_selector) ? $board_selector : array(),
             'project' => isset($project) ? $project : array(),
         )) ?>
-        <section class="page">
+        <?php
+            if(isset($_GET['controller']) && $_GET['controller'] == 'ProjectListController' ){
+                $classe = 'sem-main';
+            }
+            else{
+                $classe = '';
+            }
+        ?>
+        <section class="page <?=$classe?>">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>

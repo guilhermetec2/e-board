@@ -275,7 +275,7 @@ class TaskHelper extends Base
 
         if (empty($providers)) {
             $html .= $this->helper->modal->largeIcon(
-                'plus',
+                'plus w3-hover-text-light-green',
                 t('Add a new task'),
                 'TaskCreationController',
                 'show', array(

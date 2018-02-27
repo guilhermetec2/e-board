@@ -4,7 +4,7 @@
 
 <tr class="board-swimlane-columns-<?= $swimlane['id'] ?>">
     <?php foreach ($swimlane['columns'] as $column): ?>
-    <th class="board-column-header board-column-header-<?= $column['id'] ?>" data-column-id="<?= $column['id'] ?>">
+    <th class="board-column-header board-column-header-<?= $column['id'] ?> w3-light-grey" data-column-id="<?= $column['id'] ?>">
 
         <!-- column in collapsed mode -->
         <div class="board-column-collapsed">
@@ -18,7 +18,7 @@
             <?php if (! $not_editable && $this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                 <?= $this->task->getNewBoardTaskButton($swimlane, $column) ?>
             <?php endif ?>
-
+        <!-- Aqui -->
             <?php if ($column['nb_tasks'] > 0): ?>
             <span title="<?= t('Task count') ?>">
                 (<span id="task-number-column-<?= $column['id'] ?>"><?= $column['nb_tasks'] ?></span>)

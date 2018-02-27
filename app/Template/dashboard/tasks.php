@@ -8,7 +8,6 @@
         <?= $this->render('task_list/header', array(
             'paginator' => $paginator,
         )) ?>
-
         <?php foreach ($paginator->getCollection() as $task): ?>
             <div class="table-list-row color-<?= $task['color_id'] ?>">
                 <?= $this->render('task_list/task_title', array(

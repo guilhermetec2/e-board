@@ -1,4 +1,4 @@
-<div class="sidebar">
+<!-- <div class="sidebar w3-dark-grey">
     <ul>
         <li <?= $this->app->checkMenuSelection('DashboardController', 'show') ?>>
             <?= $this->url->link(t('Overview'), 'DashboardController', 'show', array('user_id' => $user['id'])) ?>
@@ -14,4 +14,4 @@
         </li>
         <?= $this->hook->render('template:dashboard:sidebar', array('user' => $user)) ?>
     </ul>
-</div>
+</div> -->

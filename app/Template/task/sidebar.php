@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-icons">
+<!-- <div class="sidebar sidebar-icons">
     <div class="sidebar-title">
         <h2><?= t('Task #%d', $task['id']) ?></h2>
     </div>
@@ -92,4 +92,4 @@
         <?= $this->hook->render('template:task:sidebar:actions', array('task' => $task)) ?>
     </ul>
     <?php endif ?>
-</div>
+</div> -->

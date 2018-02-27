@@ -1,6 +1,7 @@
 <div>
+
     <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-        <?= $this->render('task/dropdown', array('task' => $task)) ?>
+        <?= $this->render('task/dropdown', array('task' => $task, 'project' => $project)) ?>
     <?php else: ?>
         <strong><?= '#'.$task['id'] ?></strong>
     <?php endif ?>

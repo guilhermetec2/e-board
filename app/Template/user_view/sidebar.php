@@ -1,4 +1,4 @@
-<div class="sidebar">
+<!-- <div class="sidebar">
     <div class="sidebar-title">
         <h2><?= t('Information') ?></h2>
     </div>
@@ -105,4 +105,4 @@
 
         <?= $this->hook->render('template:user:sidebar:actions', array('user' => $user)) ?>
     </ul>
-</div>
+</div> -->

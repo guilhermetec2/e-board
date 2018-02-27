@@ -1,6 +1,6 @@
-<h1>
+<h1 class="w3-text-white">
     <span class="logo">
-        <?= $this->url->link('K<span>B</span>', 'DashboardController', 'show', array(), false, '', t('Dashboard')) ?>
+        <img src="assets/img/logo.png" class="w3-image w3-circle" style="width:30px">
     </span>
     <span class="title">
         <?php if (! empty($project) && ! empty($task)): ?>
@@ -11,7 +11,7 @@
     </span>
     <?php if (! empty($description)): ?>
         <small class="tooltip" title="<?= $this->text->markdownAttribute($description) ?>">
-            <i class="fa fa-info-circle"></i>
+            <i class="fa fa-info-circle w3-text-dark-grey"></i>
         </small>
     <?php endif ?>
 </h1>

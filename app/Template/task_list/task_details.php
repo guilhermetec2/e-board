@@ -22,8 +22,9 @@
     <?php endif ?>
 
     <?php foreach ($task['tags'] as $tag): ?>
-        <span class="table-list-category task-list-tag">
-            <?= $this->text->e($tag['name']) ?>
+        <span class="table-list-category task-list-tag w3-white w3-border w3-border-grey">
+            <i class="fa fa-flag w3-text-red"></i>
+            <!-- <?= $this->text->e($tag['name']) ?> -->
         </span>
     <?php endforeach ?>
 </div>

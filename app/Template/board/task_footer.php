@@ -22,7 +22,7 @@
     <div class="task-tags">
         <ul>
         <?php foreach ($task['tags'] as $tag): ?>
-            <li><?= $this->text->e($tag['name']) ?></li>
+            <li class="w3-white w3-border w3-border-grey"><i class="fa fa-flag w3-text-red"></i></li>
         <?php endforeach ?>
         </ul>
     </div>

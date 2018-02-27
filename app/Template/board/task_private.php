@@ -11,10 +11,11 @@
      data-category-id="<?= $task['category_id'] ?>"
      data-due-date="<?= $task['date_due'] ?>"
      data-task-url="<?= $this->url->href('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>">
-
+    
     <div class="task-board-sort-handle" style="display: none;"><i class="fa fa-arrows-alt"></i></div>
 
     <?php if ($this->board->isCollapsed($task['project_id'])): ?>
+    
         <div class="task-board-collapsed">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
             <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
@@ -36,16 +37,16 @@
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
             <div class="task-board-header">
                 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-                    <?= $this->render('task/dropdown', array('task' => $task)) ?>
-                    <?= $this->modal->large('edit', '', 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
+                    <?= $this->render('task/dropdown', array('task' => $task,'project' => $project)) ?>
                 <?php else: ?>
-                    <strong><?= '#'.$task['id'] ?></strong>
+                    <strong><?=$project['identifier']?>-<?= $task['id'] ?></strong>
                 <?php endif ?>
 
                 <?php if (! empty($task['owner_id'])): ?>
-                    <span class="task-board-assignee">
+        
+                    <!-- <span class="task-board-assignee">
                         <?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>
-                    </span>
+                    </span> -->
                 <?php endif ?>
 
                 <?= $this->render('board/task_avatar', array('task' => $task)) ?>

@@ -4,8 +4,8 @@
         <?= $this->form->hidden('action', array('action' => 'index')) ?>
 
         <div class="input-addon">
-            <?= $this->form->text('search', array(), array(), array('placeholder="'.t('Search').'"'), 'input-addon-field') ?>
-            <div class="input-addon-item">
+            <?= $this->form->text('search', array(), array(), array('placeholder="'.t('Search').'"'), 'input-addon-field w3-border w3-border-pale-grey w3-round-large') ?>
+            <div class="input-addon-item w3-border w3-border-pale-grey w3-round-large">
                 <?= $this->render('app/filters_helper') ?>
             </div>
         </div>
@@ -13,9 +13,11 @@
 </div>
 
 <?php if (! $project_paginator->isEmpty()): ?>
-    <div class="table-list">
+    <div class="table-list w3-border w3-border-pale-grey w3-round-large">
         <?= $this->render('project_list/header', array('paginator' => $project_paginator)) ?>
+        <?php $projetos = array(); ?>
         <?php foreach ($project_paginator->getCollection() as $project): ?>
+            <?php $projetos[] = $project;?>
             <div class="table-list-row table-border-left">
                 <div>
                     <?php if ($this->user->hasProjectAccess('ProjectViewController', 'show', $project['id'])): ?>
@@ -41,28 +43,34 @@
             </div>
         <?php endforeach ?>
     </div>
-
     <?= $project_paginator ?>
 <?php endif ?>
-
 <?php if (empty($overview_paginator)): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
 <?php else: ?>
+    <?php $cont = 0; ?>
     <?php foreach ($overview_paginator as $result): ?>
+        <?php
+            for ($i=0; $i < count($projetos); $i++) { 
+                if($projetos[$i]['id'] == $result['project_id']){
+                    $projeto = $projetos[$i];
+                }
+            }
+            
+        ?>
         <?php if (! $result['paginator']->isEmpty()): ?>
             <div class="page-header">
                 <h2><?= $this->url->link($this->text->e($result['project_name']), 'BoardViewController', 'show', array('project_id' => $result['project_id'])) ?></h2>
             </div>
 
-            <div class="table-list">
+            <div class="table-list w3-border w3-border-pale-grey w3-round-large">
                 <?= $this->render('task_list/header', array(
                     'paginator' => $result['paginator'],
                 )) ?>
-
                 <?php foreach ($result['paginator']->getCollection() as $task): ?>
                     <div class="table-list-row color-<?= $task['color_id'] ?>">
                         <?= $this->render('task_list/task_title', array(
-                            'task' => $task,
+                            'task' => $task, 'project' => $projeto,
                         )) ?>
 
                         <?= $this->render('task_list/task_details', array(
@@ -87,6 +95,7 @@
 
             <?= $result['paginator'] ?>
         <?php endif ?>
+    <?php $cont++; ?>
     <?php endforeach ?>
 <?php endif ?>
 

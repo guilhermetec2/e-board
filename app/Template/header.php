@@ -11,7 +11,7 @@
         $this->render('header/user_dropdown')
     )) ?>
 
-<header>
+<header class="w3-light-green w3-top">
     <div class="title-container">
         <?= $_title ?>
     </div>
